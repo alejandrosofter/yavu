@@ -1,0 +1,3 @@
+Time : 19:18:11
+SQLSTATE[HY000]: General error: 1007 Can't create database 'alejandro'; database exists
+Raw SQL : CREATE DATABASE alejandro

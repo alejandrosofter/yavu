@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rsync -av --exclude="/assets" alejandro@gsofter.com:/var/www/expensas.softer.com.ar/public_html/ /var/www/expensas.softer.com.ar/
+echo "Archivos Actualizados!"
+#mysqldump -h gsofter.com -u root --password='vertrigo'  --no-create-db "expensasBase" > bases.sql
+#mysql -u "root" --password="vertrigo" -f "expensasBase" < bases.sql 

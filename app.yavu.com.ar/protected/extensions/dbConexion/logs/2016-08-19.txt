@@ -1,0 +1,5 @@
+Time : 16:59:43
+SQLSTATE[42000] [1049] Unknown database 'yavu'
+
+Time : 16:34:22
+SQLSTATE[42000] [1049] Unknown database 'yavu'

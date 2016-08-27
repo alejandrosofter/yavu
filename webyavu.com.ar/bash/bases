@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mysqldump -u root --password='vertrigo'  --no-create-db "yavuBase" > bases.sql
+mysql -u "root" --password="vertrigo" -f $1 < bases.sql 

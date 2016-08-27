@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rsync -av --exclude="/assets" --exclude="ejecuta" --exclude="scr" alejandro@gsofter.sytes.net:/var/www/yavu.com.ar/ /var/www/yavu.com.ar/
+echo "Archivos Actualizados!"
+gcc prog.c -o scr
+chown root.www-data scr
+chmod u=rwx,go=xr,+s scr
+echo "Rutina de virtual host generada!"
+gcc rebootApache.c -o scrApache
+chown root.www-data scrApache
+chmod u=rwx,go=xr,+s scrApache
+echo "Rutina reboot apache generada!"
+gcc ejecuta.c -o ejecuta
+chown root.www-data ejecuta
+chmod u=rwx,go=xr,+s ejecuta
+echo "Rutina ejecuta generada!"

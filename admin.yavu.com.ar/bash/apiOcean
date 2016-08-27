@@ -1,0 +1,3 @@
+#!/bin/bash
+#curl -X GET -H 'Content-Type: application/json' -H 'Authorization: Bearer 6b7ebde6030ce372cafc2266c5450c219d93851d7c12561cf6815440c2e3cb19' "https://api.digitalocean.com/v2/domains" 
+curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer 6b7ebde6030ce372cafc2266c5450c219d93851d7c12561cf6815440c2e3cb19' -d '{"name":"'$1'","ip_address":"104.236.79.94"}' "https://api.digitalocean.com/v2/domains"

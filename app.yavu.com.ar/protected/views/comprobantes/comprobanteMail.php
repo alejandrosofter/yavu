@@ -1,0 +1,1 @@
+Hola <b><?=$params['empresaReceptor']?></b> le enviamos su comprobante en el archivo adjunto. 

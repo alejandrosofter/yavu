@@ -1,0 +1,1 @@
+Tenemos el agrado de notificarle que hemos procesado un pago en el día de la fecha, el cual se estará reflejando en su cuenta de pago aproximadamente en las próximas 24 hrs. Le adjuntamos el comprobante de pago. Atte administración Asoc. Austral de Oftalmología.

@@ -1,0 +1,12 @@
+#!/bin/bash
+rsync -av /var/www/expensas.softer.com.ar/ /var/www/$1".yavu.com.ar/"
+mkdir /var/www/expensas.softer.com.ar/ /var/www/$1".yavu.com.ar/assets"
+chmod 777 /var/www/expensas.softer.com.ar/ /var/www/$1".yavu.com.ar/assets"
+replace "dbname=expensas" "dbname=$1" -- /var/www/$1".yavu.com.ar/protected/config/main.php"
+replace "dbname=tano" "dbname=$1" -- /var/www/$1".yavu.com.ar/protected/config/main.php"
+echo "$2;Activo" > /var/www/$1.yavu.com.ar/estado
+sudo cp /etc/apache2/sites-available/yavuDefault.com.ar /etc/apache2/sites-available/$1.yavu.com.ar
+echo "copiando cp /etc/apache2/sites-available/yavuDefault.com.ar /etc/apache2/sites-available/$1.yavu.com.ar"
+sudo replace "yavu.com.ar" "$1.yavu.com.ar" -- /etc/apache2/sites-available/$1.yavu.com.ar
+sudo a2ensite $1".yavu.com.ar"
+sudo apache2 reload

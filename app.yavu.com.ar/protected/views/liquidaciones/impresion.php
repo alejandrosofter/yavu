@@ -1,0 +1,4 @@
+<?=$data;?>
+<script>
+//imprimirPapel();
+</script>

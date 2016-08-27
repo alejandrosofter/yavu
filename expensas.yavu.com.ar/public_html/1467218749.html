@@ -1,0 +1,286 @@
+<html>
+<head>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+<script src="js/printThis/printThis.js"></script>
+<style>
+table{
+	font-size: px;
+	font-family: "arial";
+	border-collapse: collapse;
+	 border-style: solid;
+	 border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<script>
+	 
+    function ocultaLocal(){
+      var firstHeaderLineElement= $(".columnaLocal");
+        
+    var colspan = parseInt(firstHeaderLineElement.attr("colspan"), 10);
+        console.log(colspan);
+    var associateElements = $("tr:gt(0)")
+                        .find("th:gt(0):lt("+ colspan +"), td:gt(0):lt("+ colspan +")")
+                        .add(firstHeaderLineElement);
+                        associateElements.hide();
+}
+
+</script>
+<div class="impresionPapel" id="impresionPapel">
+<div class="imprimir">
+<table border="1" cellpadding="0" cellspacing="0" style="height:50px; width:100%">
+	<tbody>
+		<tr style="height:100px">
+			<td style="text-align:right;height:100px">&nbsp;
+			<div style="padding:5px;position:absolute; width:10%;left: 10px; top: 5px">
+			<img src='images/logoFiorani.png' />			</div>
+			</td>
+			<td style="text-align:right; width:50px;padding:10px"><strong><span style="font-size:48px;padding:10px">X</span></strong></td>
+			<td style="text-align:right">
+			<div style=" text-align: right;">&nbsp;</div>
+			<div style="position:absolute; width:96%;left: 10px; top: 10px;">
+				<div>
+				<div style="text-align: right;"><big><b>Nro 01051</b></big></div>
+
+				<div style="text-align: right;"><span style="font-size:14px">29/06/2016</span></div>
+				</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border="1" cellpadding="3" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align:left; vertical-align:top; width:600px">
+
+			<div style="float:left">
+				<div><span style="font-size:24px"><strong></strong></span></div>
+
+				<div><span style="font-size:12px"><strong>Exento</strong></span></div>
+
+				<div>Hipolito Yrigoyen N 1160</div>
+
+				<div>CUIT: 30710239416</div>
+
+				<div></div>
+			</div>
+			</td>
+			<td style="text-align:right; vertical-align:top; width:600px">
+			
+
+			<div><span style="font-size:16px"><strong>A ALVAREZ VERONICA</strong></span></div>
+
+			<div><span style="font-size:12px"><strong>Consumidor Final</strong></span></div>
+
+			<div>s/ domicilio</div>
+
+			<div><strong>CUIT:</strong> s/cuit</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<table width="100%"  border="1" cellpadding="0" class="tablaItems" cellspacing="0"><tr>
+<th colspan="1" rowspan="2"
+style="vertical-align: top;vertical-align: bottom;  text-align: center;width:30px ">Prop<br>
+</th>
+<th colspan="1" rowspan="2"
+style="vertical-align: top;vertical-align: bottom;  ">Concepto</th>
+
+<th colspan="3" class="columnaDepto" rowspan="1" id="colDepto"
+style="vertical-align: top;vertical-align: bottom;  text-align: center;">Depto.<br>
+</th>
+<th colspan="3" class="columnaCochera" scope="col"  id="colCochera" rowspan="1" style="vertical-align: top; text-align: center;">Cochera<br></th>
+<th colspan="3" class="columnaLocal"  id="colLocal" rowspan="1" style="vertical-align: top; text-align: center;">Local<br></th>
+<th colspan="1" rowspan="2" style="vertical-align: top;vertical-align: bottom;width:30px ">$Resv.</th>
+<th colspan="1" rowspan="2"style="vertical-align: top;vertical-align: bottom;  text-align: center;width:30px">Interes</th>
+<th colspan="1" rowspan="2" style="vertical-align: top;vertical-align: bottom; ">Total<br>
+</th>
+</tr>
+<tr>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+<th  class="columnaCochera" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th class="columnaCochera" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th class="columnaCochera" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+</tr>
+<tr>
+						<td style="vertical-align: top;width:60px ; text-align: center;padding-left:5px;padding-right:5px"><small>PB A</small></td>
+						<td style="vertical-align: top; padding-left:5px;padding-right:5px"><small>Expensas Febrero de 2016</small></td>
+
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 1,304.00</small></td>
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td style="vertical-align: top; text-align: center;padding-left:5px;padding-right:5px"><small> 13,027.00</small></td>
+						<td style="vertical-align: top;width:60px ;padding-right:5px; text-align: right;"><small> 14,331.00</small></td>
+					</tr></table><div style='float:right'><table  border="1" cellpadding="0" cellspacing="0"><tr><td  style='padding:3px'><span>SUB-TOTAL</td><td style='padding:5px'> $14,331.00</span></td></tr><tr><td  style='padding:3px'><span>INTERÉS</td><td style='padding:5px'> $0.00</span></td></tr><tr><td  style='padding:3px'><span>BONIFICACIÓN</td><td style='padding:5px'> $0.00</span></td></tr><tr><td  style='padding:3px'><span><b>TOTAL</td><td style='padding:5px'> $14,331.00</span></b></td></tr></table></div><div style='float:left'><table  border="1" cellpadding="0" cellspacing="0"><tr><td  style='padding:3px'><span>IMPORTE PAGADO</td><td style='padding:5px'> $14,331.00</span></td></tr><tr><td  style='padding:3px'><span>IMPORTE A PAGAR</td><td style='padding:5px'> $0.00</span></td></tr></table></div><script>$('.columnaCochera').hide();</script><script>$('.columnaLocal').hide();</script>			</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</div>
+<div style="position:absolute; top:700px"><script>
+	 
+    function ocultaLocal(){
+      var firstHeaderLineElement= $(".columnaLocal");
+        
+    var colspan = parseInt(firstHeaderLineElement.attr("colspan"), 10);
+        console.log(colspan);
+    var associateElements = $("tr:gt(0)")
+                        .find("th:gt(0):lt("+ colspan +"), td:gt(0):lt("+ colspan +")")
+                        .add(firstHeaderLineElement);
+                        associateElements.hide();
+}
+
+</script>
+<div class="impresionPapel" id="impresionPapel">
+<div class="imprimir">
+<table border="1" cellpadding="0" cellspacing="0" style="height:50px; width:100%">
+	<tbody>
+		<tr style="height:100px">
+			<td style="text-align:right;height:100px">&nbsp;
+			<div style="padding:5px;position:absolute; width:10%;left: 10px; top: 5px">
+			<img src='images/logoFiorani.png' />			</div>
+			</td>
+			<td style="text-align:right; width:50px;padding:10px"><strong><span style="font-size:48px;padding:10px">X</span></strong></td>
+			<td style="text-align:right">
+			<div style=" text-align: right;">&nbsp;</div>
+			<div style="position:absolute; width:96%;left: 10px; top: 10px;">
+				<div>
+				<div style="text-align: right;"><big><b>Nro 01051</b></big></div>
+
+				<div style="text-align: right;"><span style="font-size:14px">29/06/2016</span></div>
+				</div>
+			</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<table border="1" cellpadding="3" cellspacing="0" style="width:100%">
+	<tbody>
+		<tr>
+			<td style="text-align:left; vertical-align:top; width:600px">
+
+			<div style="float:left">
+				<div><span style="font-size:24px"><strong></strong></span></div>
+
+				<div><span style="font-size:12px"><strong>Exento</strong></span></div>
+
+				<div>Hipolito Yrigoyen N 1160</div>
+
+				<div>CUIT: 30710239416</div>
+
+				<div></div>
+			</div>
+			</td>
+			<td style="text-align:right; vertical-align:top; width:600px">
+			
+
+			<div><span style="font-size:16px"><strong>A ALVAREZ VERONICA</strong></span></div>
+
+			<div><span style="font-size:12px"><strong>Consumidor Final</strong></span></div>
+
+			<div>s/ domicilio</div>
+
+			<div><strong>CUIT:</strong> s/cuit</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<table width="100%"  border="1" cellpadding="0" class="tablaItems" cellspacing="0"><tr>
+<th colspan="1" rowspan="2"
+style="vertical-align: top;vertical-align: bottom;  text-align: center;width:30px ">Prop<br>
+</th>
+<th colspan="1" rowspan="2"
+style="vertical-align: top;vertical-align: bottom;  ">Concepto</th>
+
+<th colspan="3" class="columnaDepto" rowspan="1" id="colDepto"
+style="vertical-align: top;vertical-align: bottom;  text-align: center;">Depto.<br>
+</th>
+<th colspan="3" class="columnaCochera" scope="col"  id="colCochera" rowspan="1" style="vertical-align: top; text-align: center;">Cochera<br></th>
+<th colspan="3" class="columnaLocal"  id="colLocal" rowspan="1" style="vertical-align: top; text-align: center;">Local<br></th>
+<th colspan="1" rowspan="2" style="vertical-align: top;vertical-align: bottom;width:30px ">$Resv.</th>
+<th colspan="1" rowspan="2"style="vertical-align: top;vertical-align: bottom;  text-align: center;width:30px">Interes</th>
+<th colspan="1" rowspan="2" style="vertical-align: top;vertical-align: bottom; ">Total<br>
+</th>
+</tr>
+<tr>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th  class="columnaDepto" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+<th  class="columnaCochera" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th class="columnaCochera" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th class="columnaCochera" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Ord.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Ext.<br>
+</th>
+<th class="columnaLocal" style="vertical-align: top; text-align: center;">Esp.<br>
+</th>
+</tr>
+<tr>
+						<td style="vertical-align: top;width:60px ; text-align: center;padding-left:5px;padding-right:5px"><small>PB A</small></td>
+						<td style="vertical-align: top; padding-left:5px;padding-right:5px"><small>Expensas Febrero de 2016</small></td>
+
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 1,304.00</small></td>
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaDepto" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaCochera" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td class="columnaLocal" style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td style="vertical-align: top; text-align: center;"><small> 0.00</small></td>
+						<td style="vertical-align: top; text-align: center;padding-left:5px;padding-right:5px"><small> 13,027.00</small></td>
+						<td style="vertical-align: top;width:60px ;padding-right:5px; text-align: right;"><small> 14,331.00</small></td>
+					</tr></table><div style='float:right'><table  border="1" cellpadding="0" cellspacing="0"><tr><td  style='padding:3px'><span>SUB-TOTAL</td><td style='padding:5px'> $14,331.00</span></td></tr><tr><td  style='padding:3px'><span>INTERÉS</td><td style='padding:5px'> $0.00</span></td></tr><tr><td  style='padding:3px'><span>BONIFICACIÓN</td><td style='padding:5px'> $0.00</span></td></tr><tr><td  style='padding:3px'><span><b>TOTAL</td><td style='padding:5px'> $14,331.00</span></b></td></tr></table></div><div style='float:left'><table  border="1" cellpadding="0" cellspacing="0"><tr><td  style='padding:3px'><span>IMPORTE PAGADO</td><td style='padding:5px'> $14,331.00</span></td></tr><tr><td  style='padding:3px'><span>IMPORTE A PAGAR</td><td style='padding:5px'> $0.00</span></td></tr></table></div><script>$('.columnaCochera').hide();</script><script>$('.columnaLocal').hide();</script>			</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</div></div>
+<script>
+
+function imprimirPapel(debugFalg)
+{
+    $(".impresionPapel").printThis({
+      debug: debugFalg,             
+      importCSS: true,           
+      printContainer: true,      
+      //loadCSS: "css/impresionComprobante.css",             
+      removeInline: false        
+  });
+}
+</script>
+</body>
+</html>

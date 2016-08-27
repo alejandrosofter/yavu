@@ -1,0 +1,27 @@
+Time : 20:19:19
+SQLSTATE[HY000]: General error: 1007 Can't create database 'fgasdfdsa'; database exists
+Raw SQL : CREATE DATABASE fgasdfdsa
+
+Time : 20:19:18
+SQLSTATE[HY000]: General error: 1007 Can't create database 'fgasdfdsa'; database exists
+Raw SQL : CREATE DATABASE fgasdfdsa
+
+Time : 20:19:16
+SQLSTATE[HY000]: General error: 1007 Can't create database 'fgasdfdsa'; database exists
+Raw SQL : CREATE DATABASE fgasdfdsa
+
+Time : 19:52:11
+SQLSTATE[HY000]: General error: 1007 Can't create database 'alejandro22'; database exists
+Raw SQL : CREATE DATABASE alejandro22
+
+Time : 19:52:10
+SQLSTATE[HY000]: General error: 1007 Can't create database 'alejandro22'; database exists
+Raw SQL : CREATE DATABASE alejandro22
+
+Time : 19:52:08
+SQLSTATE[HY000]: General error: 1007 Can't create database 'alejandro22'; database exists
+Raw SQL : CREATE DATABASE alejandro22
+
+Time : 18:53:53
+SQLSTATE[HY000]: General error: 1007 Can't create database 'Paula'; database exists
+Raw SQL : CREATE DATABASE Paula
