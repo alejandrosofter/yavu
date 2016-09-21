@@ -2,11 +2,8 @@
 
 class PutoController extends Controller
 {
-	public function actionIndex()
-	{
-		$this->render('index');
-	}
-public function actionConsultarSolicitudes()
+	
+	public function actionConsultarSolicitudes()
 	{
 		$data=SolicitudesServicio::model()->consultar($_GET['q']);
 		$this->renderPartial("_solicitudes",array('datos'=>$data));
@@ -143,7 +140,7 @@ $mPDF1->SetWatermarkText("YAVU");
 		{
 			$model= new SolicitudesServicio;
 			if(isset($_GET['SolicitudesServicio']))$model->buscar=$_GET['SolicitudesServicio']['buscar'];
-			$this->render('index',array(
+			$this->render('/solicitudesServicio/index',array(
 			'dataProvider'=>$model,
 			));
 		}
