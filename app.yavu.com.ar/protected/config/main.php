@@ -132,11 +132,11 @@ return array(
 	'autoCreateLogTable'=>true, 
 	'levels'=>'info',
 				// uncomment the following to show log messages on web pages
-				/*
+				
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+				
 ),
 ),
 
