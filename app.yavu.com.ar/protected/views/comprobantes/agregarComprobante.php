@@ -11,7 +11,9 @@
 
 <h1><img src='images/iconos/glyphicons/glyphicons_235_pen.png'/> Agregar <small>Comprobante</small>
 
-<?php if(count($_SESSION["paraFacturar"])>0){?>
+<?php
+  if(!isset($_SESSION["paraFacturar"]))$_SESSION["paraFacturar"]=array();
+  if(count($_SESSION["paraFacturar"])>0){?>
   <button onclick='agregarSolicitudes()' id='btnAgregarSolicitudes' class="btn btn-info" type="button"><i class=" icon-plus-sign icon-white"></i> (<?=count($_SESSION["paraFacturar"]);?>) Solicitudes para facturar</button>
    <button onclick='quitarSolicitudes()' id='btnquitarSolicitudes' class="btn btn-danger" type="button"><i class=" icon-remove icon-white"></i> Vaciar Solicitudes</button>
  <?php }?>
