@@ -2,13 +2,19 @@
 
 function calcularFinal()
 {
+	facturaSolicitudesServicio();
 	setEmailEntidad();
 	tipoComprobante();
 	$('#labelGuarda').hide();
 	setPaga();
 	setImportes();
 }
-function setImportes()
+	function facturaSolicitudesServicio()
+	{
+		if(facturaSolicitudes)$("#facturaSolicitudes").html('<span style="" class="label label-info">FACTURANDO SOLICITUDES</span>');
+		else $("#facturaSolicitudes").html("");
+	}
+	function setImportes()
 {
 	var importe=getImporteTotal();
 	$('#importePago').val((importe));
@@ -56,7 +62,7 @@ function ingresarComprobante()
 	var pagos={1:$('#importePago').val(),2:$('#importePagoDebito').val(),3:$('#importePagoTransf').val(),4:$('#importePagoCheques').val()  }
 	var mai=$('#enviaMail').attr('checked')?' y enviando mail <img src="images/iconos/glyphicons/glyphicons_010_envelope.png"/>.':'.';
 	$.blockUI({ message: '<h3><img src="img/ajax_loader.gif" /> Espere un momento, ingresando comprobante '+mai+'</h3>' });
-	$.getJSON( "index.php?r=comprobantes/ingresarComprobante",{pago:pagos,items:items,email:$('#inputEmail').val(),imprimeCompro:$('#imprimeCompro').val(),guardarMail:$('#guardarMail').attr('checked'),enviaMail:$('#enviaMail').attr('checked'),datosComprobante:dataComprobante}, function( data ) {
+	$.getJSON( "index.php?r=comprobantes/ingresarComprobante",{facturaSolicitudesServicio:facturaSolicitudes,pago:pagos,items:items,email:$('#inputEmail').val(),imprimeCompro:$('#imprimeCompro').val(),guardarMail:$('#guardarMail').attr('checked'),enviaMail:$('#enviaMail').attr('checked'),datosComprobante:dataComprobante}, function( data ) {
 		$.unblockUI();
 		console.log("LLEGA:");
 		console.log(data);
@@ -231,6 +237,7 @@ function validarEmail() {
 	</tr>
 	
 </table>
+				<div id='facturaSolicitudes'></div>
 <img style='padding:15px; float:left' id='imgPagado' src='images/pagado.jpg'/>
 <div style='padding:15px; float:right'><h1><small>TOTAL </small><span id='labelTotal'></span></h1></div>
       </div>

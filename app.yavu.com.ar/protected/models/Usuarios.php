@@ -57,6 +57,8 @@ class Usuarios extends CActiveRecord
 	}
 	private function menucomercial($menu)
 	{
+		$itemsFacturar=isset($_SESSION["paraFacturar"])?$_SESSION["paraFacturar"]:null;
+		$lab=count($itemsFacturar)==0?"":(count($itemsFacturar)." Para Facturar");
 		return array(
 			array('label'=>'Inicio','icon'  => 'home', 'url'=>'index.php?r=usuarios/cuenta'),
 			array('label'=>'Entidades','icon'  => 'icon-user', 'url'=>'#', 'items'=>array(                   
@@ -70,6 +72,14 @@ class Usuarios extends CActiveRecord
                     '',
                     array('label'=>'Forma de Pagos', 'url'=>'index.php?r=PagosFormas/'),
                 )),
+			 array('label'=>'Servicios','icon'  => 'icon-list-alt', 'url'=>'#', 'items'=>array(
+                   
+                    array('label'=>'Solicitudes de Servicio', 'url'=>'index.php?r=solicitudesServicio'),
+										array('label'=>'Nueva Solicitud', 'url'=>'index.php?r=solicitudesServicio/create'),
+                    //array('label'=>'Agregar', 'url'=>'index.php?r=Pagos/create'),
+                   
+                    //array('label'=>'Forma de Pagos', 'url'=>'index.php?r=PagosFormas/'),
+                )),
 			 array('label'=>'Comprobantes','icon'  => 'icon-plus', 'url'=>'#', 'items'=>array(
                    
                     array('label'=>'Ver Comprobantes', 'url'=>'index.php?r=Comprobantes'),
@@ -81,9 +91,9 @@ class Usuarios extends CActiveRecord
                  //  array('label'=>'Agregar','visible'=>Yii::app()->user->checkAccess("Pagos.Create"),  'url'=>'index.php?r=Pagos/create'),
             
                 )),
-			  array('label'=>'Envio de Mails','icon'  => 'envelope', 'url'=>'index.php?r=mail'),
+			  array('label'=>'Mails','icon'  => 'envelope', 'url'=>'index.php?r=mail'),
 			  null,
-count($menu)>0?array('label'=>'<span class="label label-info">'.count($menu).' acción</span>','type'=>'html', 'url'=>'#','activeCssClass'=>'icon-user', 'items'=>$menu):null,
+array("label"=>'<span style="padding-top:10px" class="label label-info"><a id="paraFacturar" style="color:white" href="index.php?r=comprobantes/agregarComprobante">'.$lab.'</a></span>'),
 
 
 

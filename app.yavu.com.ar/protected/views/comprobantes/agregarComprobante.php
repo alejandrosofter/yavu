@@ -9,12 +9,17 @@
 
 
 
-<h1><img src='images/iconos/glyphicons/glyphicons_235_pen.png'/> Agregar <small>Comprobante</small></h1>
-<div  class="btn-group btn-group-vertical"  style='float:right;padding-top:50px' id='botones'>
+<h1><img src='images/iconos/glyphicons/glyphicons_235_pen.png'/> Agregar <small>Comprobante</small>
 
-<button onclick="abreVentana()" id='btnAceptar' class="btn btn-success" type="button"><i class="icon-ok icon-white"></i></button>
-<button onclick="agregarItem()" id='btnAgregar' class="btn  btn-inverse" type="button"><i class=" icon-plus-sign icon-white"></i></button>
-<button onclick='cancelarComprobante()' id='btnRenovar' class="btn btn-danger" type="button"><i class="icon-remove icon-white"></i></button>
+<?php if(count($_SESSION["paraFacturar"])>0){?>
+  <button onclick='agregarSolicitudes()' id='btnAgregarSolicitudes' class="btn btn-info" type="button"><i class=" icon-plus-sign icon-white"></i> (<?=count($_SESSION["paraFacturar"]);?>) Solicitudes para facturar</button>
+   <button onclick='quitarSolicitudes()' id='btnquitarSolicitudes' class="btn btn-danger" type="button"><i class=" icon-remove icon-white"></i> Vaciar Solicitudes</button>
+ <?php }?>
+</h1>
+<div  class="btn-group btn-group-vertical"  style='float:right;padding-top:50px' id='botones'>
+<button onclick="agregarItem()" id='btnAgregar' class="btn  btn-inverse" type="button"><i class=" icon-plus-sign icon-white"></i> Nuevo Item        </button>
+
+
 </div>
 <div style='margin: auto;
     width: 75%;padding-top: 50px;'>
@@ -22,11 +27,16 @@
 </div>
 
 <?=$this->renderPartial('_finalizarComprobante',array());?>
+
+<div style="width:100%;padding-top:50px">
+  <button style="float:right" onclick="abreVentana()" id='btnAceptar' class="btn btn-success" type="button"><h1>FINALIZAR </h1> </button>
+</div>
 <script type="text/javascript">
 
 
 var dataComprobante={idTipoComprobante:<?=$params['idTipoComprobante']?>,fecha:"<?=$params['fecha']?>",idEntidad:<?=$params['idEntidad']?>,esElectronica:<?=$params['hayElectronica']?>};
 init();
+var facturaSolicitudes=false;
 function init()
 {
     iniciarStickBotonera();
@@ -36,6 +46,52 @@ function init()
     chequearTipoFactura(dataComprobante.idTipoComprobante);
     setDatosEntidad(<?=$params['idEntidad']?>);
 }
+  function agregarSolicitudes()
+  {
+   
+    $.blockUI({ css: { backgroundColor: '#ccc', color: '#fff'},message: '<h1>AGREGANDO ITEMS ...</h1>',  });
+		$.getJSON("index.php?r=solicitudesServicio/facturarCanasta",function(data){
+			sweetAlert("Genial!", "Se han agregado las solicitudes, termina el comprobante para que se marquen como facturados!", "success");
+      $('#paraFacturar').html("");
+      quitarItem(1);
+      agregarItemsCanasta(data);
+      facturaSolicitudes=true;
+      $('#btnAgregarSolicitudes').hide();
+      $('#btnquitarSolicitudes').hide();
+      $.unblockUI();
+		});
+    
+  }
+  function agregarItemsCanasta(data)
+  {
+    data.forEach(function(item) {
+    agregarItem(item.cantidad,item.requerimiento,0);
+});
+  }
+  function quitarSolicitudesServer()
+  {
+    $.blockUI({ css: { backgroundColor: '#ccc', color: '#fff'},message: '<h1>VACIANDO CANASTA ...</h1>',  });
+		$.get("index.php?r=solicitudesServicio/vaciarFacturar",function(data){
+			sweetAlert("Genial!", "Se ha vaciado la canasta!", "success");
+      $('#paraFacturar').html("");
+      $('#btnAgregarSolicitudes').hide();
+      $('#btnquitarSolicitudes').hide();
+      $.unblockUI();
+		});
+  }
+  function quitarSolicitudes() {
+    sweetAlert({
+      title: "Estas seguro de vaciar las solicitudes?",
+      text: "Igualmente las solicitudes seguiran estando, solo vaciaras la canasta de solicitudes",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Si vaciar!",
+      closeOnConfirm: false
+    }, function() {
+      quitarSolicitudesServer();
+    });
+  }
 function abreVentana()
 {
     if(datosValidos())abrir();  
@@ -97,7 +153,7 @@ function cancelarComprobante()
 }
 function tooltipsBotonera()
 {
-    $('#btnAceptar').popover({content:'Finalizar',trigger:'hover',placement:'bottom'});
+    $('#btnAceptar').popover({content:'Queda 1 paso para finalizar el comprobante',trigger:'hover',placement:'bottom'});
      $('#btnAgregar').popover({content:'Agregar Item',trigger:'hover',placement:'bottom'});
       $('#btnRenovar').popover({content:'Borrar Factura',trigger:'hover',placement:'bottom'});
 }
@@ -226,23 +282,26 @@ function iniciarElectronica()
 }
 function consultarFinalizoItem()
 {
-    swal({   title: "Desea agregar otro item o finalizar el comprobante?",   text: "",   type: "info",   showCancelButton: true,   confirmButtonColor: "#483D8B",cancelButtonColor: "#483D8B",   confirmButtonText: "Agregar Item",cancelButtonText:'Finaliza Comprobante',   closeOnConfirm: true }, 
-        function(isConfirm){   if (isConfirm) agregarItem(); else abreVentana(); });
+    swal({   title: "Desea agregar otro item?",   text: "",   type: "info",   showCancelButton: true,   confirmButtonColor: "#01c148",cancelButtonColor: "#c70000",   confirmButtonText: "Agregar Item",cancelButtonText:'Continuar',   closeOnConfirm: true }, 
+        function(isConfirm){   if (isConfirm) agregarItem();  });
 }
 var items=Array();
 agregarItem();
-function agregarItem()
+function agregarItem(cantidad_,detalle_,importe_)
 {
+  cantidad_=cantidad_==null?1:cantidad_;
+  detalle_=detalle_==null?"ingrese el detalle":detalle_;
+  importe_=importe_==null?0:importe_;
     var prox=items.length+1;
     var cad="<tr id='fila_"+prox+"'>";
-          cad+="<td><a itemNro='"+prox+"' tipo='cantidad' id='"+prox+"_cantidades_editable' href='#'></a></td>";
-          cad+="          <td><a itemNro='"+prox+"' tipo='detalle' data-type='textarea' id='"+prox+"_data_detalle' href='#'></a></td>";
-          cad+="        <td><a itemNro='"+prox+"' tipo='importe'  id='"+prox+"_data_importe' href='#'></a></td><td id='importeNeto_"+prox+"'>$ 0.00</td><td id='importeTotal_"+prox+"'>$ 0.00</td>";
+          cad+="<td><a itemNro='"+prox+"' tipo='cantidad' id='"+prox+"_cantidades_editable' href='#'>"+cantidad_+"</a></td>";
+          cad+="          <td><a itemNro='"+prox+"' tipo='detalle' data-type='textarea' id='"+prox+"_data_detalle' href='#'>"+detalle_+"</a></td>";
+          cad+="        <td><a itemNro='"+prox+"' tipo='importe'  id='"+prox+"_data_importe' href='#'>"+importe_+"</a></td><td id='importeNeto_"+prox+"'>$ 0.00</td><td id='importeTotal_"+prox+"'>$ 0.00</td>";
            cad+="   <td style='width:10px'><img title='Quitar Item' data-placement='left' data-toggle='tooltip' onclick='quitarItem("+prox+")' style='cursor:pointer' src='images/iconos/glyphicons/glyphicons_207_remove_2.png'/></td>";
            cad+="   </tr>";
     $('#tablaItems tr:last').after(cad);
     
-   var aux={ cantidad:0 , detalle:'' , importe:0, habilitado:true };
+   var aux={ cantidad:cantidad_ , detalle:detalle_ , importe:importe_, habilitado:true };
     items.push(aux);
     iniciarEditorItem(prox);
     var sel='#'+prox+'_cantidades_editable';

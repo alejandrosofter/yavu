@@ -68,7 +68,7 @@ class Imagenes extends CActiveRecord
 		if($ext=="gif")return "IMAGETYPE_GIF";
 		return "IMAGETYPE_JPEG";
 	}
-	public function getImagen($key,$html=false)
+	public function getImagen($key,$html=false,$style='')
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
@@ -80,15 +80,15 @@ class Imagenes extends CActiveRecord
 		$res= self::model()->findAll($criteria);
 		if(count($res)>0)$ret= $res[0];
 		if($ret)
-		if($html)return $ret->getHtml();
+		if($html)return $ret->getHtml($style);
 		return $ret;
 	}
-	public function getHtml()
+	public function getHtml($style='')
 	{
 		$arr=explode('.',$this->nombre);
 		$pos=count($arr)-1;
 		$ext=$arr[$pos];
-		return '<img class="img-rounded" src="data:image/'.$ext.';base64,'.stripslashes(base64_encode( $this->imagen )).'"/>';
+		return '<img class="img-rounded" style="'.$style.'" src="data:image/'.$ext.';base64,'.stripslashes(base64_encode( $this->imagen )).'"/>';
 	}
 
 	/**

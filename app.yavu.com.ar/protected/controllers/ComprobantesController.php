@@ -48,12 +48,22 @@ class ComprobantesController extends Controller
 		}
 		public function actionIngresarComprobante()
 		{
+			if($_GET['facturaSolicitudesServicio']==true)$this->facturaSolicitudes();
 			$data=Comprobantes::model()->ingresarComprobante($_GET['pago'],$_GET['datosComprobante'],$_GET['items']);
+			
 			if(isset($_GET['enviaMail']) && $data['id']!=null)if($_GET['enviaMail']=='checked')
 				$res=Comprobantes::model()->enviarComprobante($data['id'],$_GET['email']);
 			if(isset($_GET['guardarMail']))$this->cambiarMailEntidad($_GET['email'],$_GET['datosComprobante']['idEntidad']);
 			echo CJSON::encode($data);
 		}
+	private function facturaSolicitudes()
+	{
+		$items=$_SESSION["paraFacturar"];
+		foreach($items as $item){
+			SolicitudServicioEstados::model()->ingresar($item,5,Date("Y-m-d"),"Se factura la orden de servicio!");//estado 5 FACTURADA
+		}
+		$_SESSION["paraFacturar"]=array();
+	}
 		private function cambiarMailEntidad($mail,$idEntidad)
 		{
 			$model=Entidades::model()->findByPk($idEntidad);
