@@ -15,12 +15,15 @@
     <th>FECHA</th>
     <th>CLIENTE</th>
     <th>REQUERIMIENTO</th>
+		<th>TEL.</th>
   </tr>
   <?php foreach($datos as $item){?>
   <tr title="<?=$item->estado->nombreEstadoSolicitud?>" id='fila_<?=$item->id;?>' onclick="clickFila(<?=$item->id;?>)" class="<?=$item->nombreClassColor;?>">
     <td style='width:60px'><small><?=Yii::app()->dateFormatter->format("dd/MM/yy",$item->fechaHora)?></small></td>
     <td style='width:180px'><strong><?=$item->entidad->razonSocial?></strong></td>
+		
     <td><?=$item->requerimiento?></td>
+		<td style='width:70px'><small><small><small><?=$item->entidad->telefono?></small></small></small></td>
    
     <td style='width:70px'>
       <a class='imprime' data-fancybox-type='iframe' href="index.php?r=solicitudesServicio/update&id=<?=$item->id;?>"><img style="width:20px" title='Modificar' src='images/iconos/glyphicons/glyphicons_030_pencil.png'/></a>
